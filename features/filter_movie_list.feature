@@ -25,7 +25,6 @@ Background: movies have been added to database
 Scenario: restrict to movies with "PG" or "R" ratings
   And I check the "PG" checkbox
   Then I should see "The Incredibles"
-end
   
   # enter step(s) to check the "PG" and "R" checkboxes
   # enter step(s) to uncheck all other checkboxes
