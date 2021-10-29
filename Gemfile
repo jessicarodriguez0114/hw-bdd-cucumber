@@ -27,8 +27,3 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
 end
-
-group :production do
-  gem 'pg', '~> 0.2'
-  gem 'rails_12factor'
-end

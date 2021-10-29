@@ -2,10 +2,10 @@
 
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
+      Movie.create(movie)
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
   end
-  pending "Fill in this step in movie_steps.rb"
 end
 
 Then /(.*) seed movies should exist/ do | n_seeds |
@@ -16,11 +16,15 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
+    expect(page.body.index(e1) < page.body.index(e2))
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  pending "Fill in this step in movie_steps.rb"
 end
-
+Then /I should not see "(.*)" before "(.*)"/ do |e1, e2|
+    expect(page.body.index(e2) < page.body.index(e1))
+  #  ensure that that e1 occurs before e2.
+  #  page.body is the entire content of the page as a string.
+end
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
 #  "When I check the following ratings: G"
@@ -34,8 +38,8 @@ end
 
 # Part 2, Step 3
 Then /^I should (not )?see the following movies: (.*)$/ do |no, movie_list|
+    expect(movies_table).to_not have_content(movie_list)
   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
-  pending "Fill in this step in movie_steps.rb"
 end
 
 Then /I should see all the movies/ do
@@ -56,7 +60,6 @@ Then /^debug javascript$/ do
   page.driver.debugger
   1
 end
-
 
 Then /complete the rest of of this scenario/ do
   # This shows you what a basic cucumber scenario looks like.
