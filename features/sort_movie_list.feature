@@ -24,7 +24,7 @@ Background: movies have been added to database
 
 Scenario: sort movies alphabetically
   When I follow "Movie Title"
-  Then I should see "Chocolat" before "When Harry Met Sally"
+  Then I should see "Chocolat" before "When Harry Met Sally" on the RottenPotatoes home page sorted by title
   
   When I follow "Movie Title"
   Then I should not see "Chicken Run" before "2001: A Space Odyssey"

@@ -25,6 +25,7 @@ Then /I should not see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
 end
+
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
 #  "When I check the following ratings: G"
@@ -33,7 +34,17 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  pending "Fill in this step in movie_steps.rb"
+  ratings_list.split(",").each do |rating|
+      if uncheck.nil?
+          check "ratings_#{rating}"
+      else
+          uncheck "ratings_#{rating}"
+      end
+  end
+end
+
+When /I press refresh/ do |refresh|
+    click_button(refresh)
 end
 
 # Part 2, Step 3
@@ -44,7 +55,9 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  pending "Fill in this step in movie_steps.rb"
+    table_rows = page.all("table#movies").length
+    value = Movie.all.count
+    expect(table_rows).to eq value
 end
 
 ### Utility Steps Just for this assignment.

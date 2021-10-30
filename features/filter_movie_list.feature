@@ -23,8 +23,9 @@ Background: movies have been added to database
   Then 10 seed movies should exist
 
 Scenario: restrict to movies with "PG" or "R" ratings
-  And I check the "PG" checkbox
-  Then I should see "The Incredibles"
+  When I check the following ratings: PG, G, R
+  #And I press refresh
+  Then I should not see the following movies: "Amelie", "The Terminator", "When Harry Met Sally"
   
   # enter step(s) to check the "PG" and "R" checkboxes
   # enter step(s) to uncheck all other checkboxes
@@ -34,4 +35,6 @@ Scenario: restrict to movies with "PG" or "R" ratings
 
 Scenario: all ratings selected
   # your steps here
-  #Then I should see 10 movies
+  When I check the following ratings: G, PG, PG-13, R
+  #And I press refresh
+  Then I should see all the movies

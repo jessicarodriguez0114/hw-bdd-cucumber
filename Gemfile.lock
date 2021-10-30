@@ -121,7 +121,6 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    pg (0.21.0)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -157,11 +156,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (4.2.11)
       actionpack (= 4.2.11)
       activesupport (= 4.2.11)
@@ -233,11 +227,9 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   jquery-rails
-  pg (~> 0.2)
   pry
   pry-byebug
   rails (= 4.2.11)
-  rails_12factor
   rspec-rails
   sass-rails (~> 5.0.3)
   sqlite3 (~> 1.3.6)
